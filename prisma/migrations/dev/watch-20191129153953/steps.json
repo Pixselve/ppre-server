@@ -1,0 +1,1066 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "stepType": "CreateEnum",
+      "enum": "Role",
+      "values": [
+        "DEFAULT",
+        "MANAGER",
+        "ADMIN"
+      ]
+    },
+    {
+      "stepType": "CreateEnum",
+      "enum": "Gender",
+      "values": [
+        "MALE",
+        "FEMALE",
+        "OTHER"
+      ]
+    },
+    {
+      "stepType": "CreateEnum",
+      "enum": "PPRENature",
+      "values": [
+        "REMEDIATION",
+        "SUPPORT",
+        "UPGRADE"
+      ]
+    },
+    {
+      "stepType": "CreateEnum",
+      "enum": "SchoolAttendance",
+      "values": [
+        "ALWAYS",
+        "SHORTFREQUENTABSENCES",
+        "LONGABSENCES",
+        "FREQUENTDELAYS"
+      ]
+    },
+    {
+      "stepType": "CreateEnum",
+      "enum": "AcademicLevel",
+      "values": [
+        "CP",
+        "CE1",
+        "CE2",
+        "CM1",
+        "CM2",
+        "SIXIEME"
+      ]
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "School"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "School",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "School",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "School",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "School",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "name",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "webstite",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "phone",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "city",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "academy",
+      "type": "Academy",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "createdAt",
+      "type": "DateTime",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "School",
+      "field": "createdAt",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "School",
+      "field": "createdAt",
+      "directive": "default",
+      "argument": "",
+      "value": "now()"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "schoolYears",
+      "type": "SchoolYear",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "teachers",
+      "type": "Teacher",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "collegeSector",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "School",
+      "field": "district",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "SchoolYear"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "SchoolYear",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "SchoolYear",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "SchoolYear",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "SchoolYear",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "from",
+      "type": "DateTime",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "to",
+      "type": "DateTime",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "school",
+      "type": "School",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "studentYears",
+      "type": "StudentYear",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "classrooms",
+      "type": "Classroom",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "SchoolYear",
+      "field": "skills",
+      "type": "Skill",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "StudentYear"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "StudentYear",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "StudentYear",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "StudentYear",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "StudentYear",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "StudentYear",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "StudentYear",
+      "field": "schoolYear",
+      "type": "SchoolYear",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "StudentYear",
+      "field": "student",
+      "type": "Student",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "StudentYear",
+      "field": "classroom",
+      "type": "Classroom",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "StudentYear",
+      "field": "ppre",
+      "type": "Ppre",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "Teacher"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Teacher",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Teacher",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Teacher",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Teacher",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "firstName",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "lastName",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "school",
+      "type": "School",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "avatar",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "role",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "username",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Teacher",
+      "field": "username",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "email",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Teacher",
+      "field": "email",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "password",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "createdAt",
+      "type": "DateTime",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Teacher",
+      "field": "createdAt",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Teacher",
+      "field": "createdAt",
+      "directive": "default",
+      "argument": "",
+      "value": "now()"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Teacher",
+      "field": "classrooms",
+      "type": "Classroom",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "Student"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Student",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Student",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Student",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Student",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "firstName",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "lastName",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "birthDate",
+      "type": "DateTime",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "gender",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "username",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Student",
+      "field": "username",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "password",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Student",
+      "field": "studentYears",
+      "type": "StudentYear",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "Classroom"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Classroom",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Classroom",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Classroom",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Classroom",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Classroom",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Classroom",
+      "field": "name",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Classroom",
+      "field": "teachers",
+      "type": "Teacher",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Classroom",
+      "field": "academicLevel",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Classroom",
+      "field": "schoolYear",
+      "type": "SchoolYear",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Classroom",
+      "field": "studentYears",
+      "type": "StudentYear",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "Ppre"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Ppre",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Ppre",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Ppre",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Ppre",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "studentYear",
+      "type": "StudentYear",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "globalAssessment",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "nature",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "schoolAttendance",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "checkups",
+      "type": "PpreCheckup",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "skillsConcerned",
+      "type": "Skill",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Ppre",
+      "field": "skillsConcerned",
+      "directive": "relation"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Ppre",
+      "field": "skillsConcerned",
+      "directive": "relation",
+      "argument": "name",
+      "value": "\"SkillsConcernedToPPRE\""
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "skillsToWork",
+      "type": "Skill",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Ppre",
+      "field": "skillsToWork",
+      "directive": "relation"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Ppre",
+      "field": "skillsToWork",
+      "directive": "relation",
+      "argument": "name",
+      "value": "\"SkillsToWorkToPPRE\""
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "nativeLanguage",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "schoolingArrangements",
+      "type": "String",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "externalSupport",
+      "type": "String",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "retentionProposalAcademicLevel",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "retentionProposalResult",
+      "type": "Boolean",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "orientationProposalOrganization",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "orientationProposalResult",
+      "type": "Boolean",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "renewal",
+      "type": "Boolean",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "councilRenewalOpinion",
+      "type": "String",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Ppre",
+      "field": "councilRenewalOpinionDate",
+      "type": "DateTime",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "PpreCheckup"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "PpreCheckup",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "PpreCheckup",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "PpreCheckup",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "PpreCheckup",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "PpreCheckup",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "PpreCheckup",
+      "field": "ppre",
+      "type": "Ppre",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "PpreCheckup",
+      "field": "assessment",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "PpreCheckup",
+      "field": "skillsWorked",
+      "type": "Skill",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "Skill"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Skill",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "name",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "children",
+      "type": "Skill",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "children",
+      "directive": "relation"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Skill",
+      "field": "children",
+      "directive": "relation",
+      "argument": "name",
+      "value": "\"SkillRelation\""
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "parent",
+      "type": "Skill",
+      "arity": "optional"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "parent",
+      "directive": "relation"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Skill",
+      "field": "parent",
+      "directive": "relation",
+      "argument": "name",
+      "value": "\"SkillRelation\""
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Skill",
+      "field": "parent",
+      "directive": "relation",
+      "argument": "onDelete",
+      "value": "CASCADE"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "schoolYear",
+      "type": "SchoolYear",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "skillsConcernedPpres",
+      "type": "Ppre",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "skillsConcernedPpres",
+      "directive": "relation"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Skill",
+      "field": "skillsConcernedPpres",
+      "directive": "relation",
+      "argument": "name",
+      "value": "\"SkillsConcernedToPPRE\""
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Skill",
+      "field": "skillsToWorkPpres",
+      "type": "Ppre",
+      "arity": "list"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Skill",
+      "field": "skillsToWorkPpres",
+      "directive": "relation"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Skill",
+      "field": "skillsToWorkPpres",
+      "directive": "relation",
+      "argument": "name",
+      "value": "\"SkillsToWorkToPPRE\""
+    },
+    {
+      "stepType": "CreateModel",
+      "model": "Academy"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Academy",
+      "field": "id",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Academy",
+      "field": "id",
+      "directive": "default"
+    },
+    {
+      "stepType": "CreateDirectiveArgument",
+      "model": "Academy",
+      "field": "id",
+      "directive": "default",
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Academy",
+      "field": "id",
+      "directive": "id"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Academy",
+      "field": "id",
+      "directive": "unique"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Academy",
+      "field": "name",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Academy",
+      "field": "imageName",
+      "type": "String",
+      "arity": "required"
+    },
+    {
+      "stepType": "CreateDirective",
+      "model": "Academy",
+      "field": "imageName",
+      "directive": "unique"
+    },
+    {
+      "stepType": "DeleteModel",
+      "model": "Post"
+    },
+    {
+      "stepType": "DeleteModel",
+      "model": "User"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+generator photon {
+  provider = "photonjs"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.db"
+    enabled = false
+}
+datasource postgresql {
+  provider = "postgresql"
+  url      = "postgresql://postgres:t3Hs8gedKbJkAplB@35.233.14.44/dev?schema=main&sslmode=prefer"
+      enabled = true
+}
+
+model School {
+    id                 String             @default(cuid()) @id
+    name               String
+    webstite           String?
+    phone              String
+    city String
+    academy Academy
+    createdAt          DateTime           @default(now())
+    schoolYears SchoolYear[]
+    teachers Teacher[]
+    collegeSector String
+    district String
+}
+
+model SchoolYear {
+    id                 String             @default(cuid()) @id
+    from      DateTime
+    to        DateTime
+    school School
+    studentYears StudentYear[]
+    classrooms         Classroom[]
+    skills Skill[]
+}
+
+model StudentYear {
+    id                 String             @default(cuid()) @id
+    schoolYear SchoolYear
+    student Student
+    classroom Classroom?
+    ppre Ppre?
+}
+
+model Teacher {
+    id         String      @default(cuid()) @id
+    firstName  String
+    lastName   String
+    school     School
+    avatar     String?
+    role       String
+    username   String      @unique
+    email      String      @unique
+    password   String
+    createdAt  DateTime    @default(now())
+    classrooms Classroom[]
+}
+
+model Student {
+    id         String             @default(cuid()) @id
+    firstName  String
+    lastName   String
+    birthDate  DateTime
+    gender     String
+    username   String             @unique
+    password   String
+    studentYears StudentYear[]
+}
+
+model Classroom {
+    id                 String             @default(cuid()) @id
+    name               String
+    teachers           Teacher[]
+    academicLevel      String
+    schoolYear SchoolYear
+    studentYears StudentYear[]
+}
+
+model Ppre {
+    id                String            @default(cuid()) @id
+    studentYear StudentYear
+    globalAssessment  String?
+    nature            String?
+    schoolAttendance  String?
+    checkups          PpreCheckup[]
+    skillsConcerned   Skill[]           @relation(name: "SkillsConcernedToPPRE")
+    skillsToWork      Skill[]           @relation(name: "SkillsToWorkToPPRE")
+    nativeLanguage String?
+    schoolingArrangements String[]
+    externalSupport String[]
+    retentionProposalAcademicLevel String?
+    retentionProposalResult Boolean?
+    orientationProposalOrganization String?
+    orientationProposalResult Boolean?
+    renewal  Boolean?
+    councilRenewalOpinion String?
+    councilRenewalOpinionDate DateTime?
+}
+
+model PpreCheckup {
+    id          String  @default(cuid()) @id
+    ppre        Ppre
+    assessment  String
+    skillsWorked Skill[]
+}
+
+model Skill {
+    id                  String  @default(cuid()) @id
+    name                String
+    children            Skill[] @relation(name: "SkillRelation")
+    parent              Skill?  @relation(name: "SkillRelation", onDelete: CASCADE)
+    schoolYear SchoolYear
+    skillsConcernedPpres Ppre[] @relation(name: "SkillsConcernedToPPRE")
+    skillsToWorkPpres Ppre[] @relation(name: "SkillsToWorkToPPRE")
+}
+
+model Academy {
+    id         String             @default(cuid()) @id
+    name String
+    imageName String @unique
+}
+
+enum Role {
+    DEFAULT
+    MANAGER
+    ADMIN
+}
+
+enum Gender {
+    MALE
+    FEMALE
+    OTHER
+}
+
+enum PPRENature {
+    REMEDIATION
+    SUPPORT
+    UPGRADE
+}
+
+enum SchoolAttendance {
+    ALWAYS
+    SHORTFREQUENTABSENCES
+    LONGABSENCES
+    FREQUENTDELAYS
+}
+
+enum AcademicLevel {
+    CP
+    CE1
+    CE2
+    CM1
+    CM2
+    SIXIEME
+}
