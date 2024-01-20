@@ -9,7 +9,7 @@ datasource db {
 }
 datasource postgresql {
   provider = "postgresql"
-  url      = "postgresql://postgres:t3Hs8gedKbJkAplB@35.233.14.44/dev?schema=main&sslmode=prefer"
+  url      = "REDACTED"
       enabled = true
 }
 
